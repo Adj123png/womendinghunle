@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 微信分享相关 -->
+    <meta property="og:title" content="我们订婚啦！❤️">
+    <meta property="og:description" content="诚邀您见证我们的幸福时刻">
+    <meta property="og:image" content="https://via.placeholder.com/300x300?text=Fake+Engagement">
+    
+    <title>特别通知</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: '微软雅黑', sans-serif;
+            background: #ffe6f2;
+            min-height: 100vh;
+            transition: all 0.5s;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .engagement {
+            color: #e6005c;
+        }
+
+        .ring-img {
+            width: 200px;
+            margin: 20px 0;
+        }
+
+        .hidden {
+            display: none;
+            color: #333;
+        }
+
+        .prank-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 初始显示内容 -->
+        <div id="engagement">
+            <h1 class="engagement">我们订婚啦！❤️</h1>
+            <img src="https://via.placeholder.com/300x300?text=Fake+Ring" class="ring-img" alt="订婚戒指">
+            <p>2024年4月1日</p>
+            <p>感谢您见证这个重要时刻</p>
+        </div>
+
+        <!-- 点击后显示内容 -->
+        <div id="prank" class="hidden">
+            <div class="prank-content">
+                <h2>🎉 愚人节快乐！🎉</h2>
+                <p>哈哈哈~ 你被整啦！</p>
+                <p>这只是个善意的玩笑~</p>
+                <img src="https://via.placeholder.com/150x150?text=😂" style="width:100px;margin:15px">
+                <p>单身狗表示需要关爱~</p>
+            </div>
+        </div>
+    </div>
+
+    <p class="footer">本页面内容纯属娱乐，祝大家愚人节快乐！</p>
+
+    <script>
+        // 点击页面切换内容
+        document.body.addEventListener('click', function() {
+            document.getElementById('engagement').classList.add('hidden');
+            document.getElementById('prank').classList.remove('hidden');
+            document.body.style.background = '#fff';
+        });
+
+        // 微信分享配置（可选）
+        document.addEventListener('WeixinJSBridgeReady', function() {
+            WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                WeixinJSBridge.invoke('sendAppMessage', {
+                    "appid": "",
+                    "img_url": "https://via.placeholder.com/300x300?text=Fake+Engagement",
+                    "link": window.location.href,
+                    "desc": "诚邀您见证我们的幸福时刻",
+                    "title": "我们订婚啦！❤️"
+                });
+            });
+        });
+    </script>
+</body>
+</html>
